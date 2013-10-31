@@ -1,0 +1,3 @@
+/mirb.so: module/osv-mruby/mirb.so
+/mruby.so: module/osv-mruby/mruby.so
+
