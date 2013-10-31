@@ -1,4 +1,4 @@
-include ../../../../module.mk
+include ../module.mk
 
 module: mruby.so mirb.so
 
