@@ -1,6 +1,6 @@
 include ../module.mk
 
-module: mruby.so mirb.so
+module: mruby.so mirb.so bootfs.manifest usr.manifest
 
 mruby-objects = mruby.o libmruby.a libffi_pic.a
 mirb-objects = mirb.o libmruby.a libffi_pic.a
@@ -48,3 +48,10 @@ mruby.so: $(mruby-objects)
 mirb.so: $(mirb-objects)
 	$(makedir)
 	$(q-build-so)
+
+bootfs.manifest: mruby.so mirb.so
+	echo "/mruby.so: module/osv-mruby/mruby.so" >> $@
+	echo "/mirb.so: module/osv-mruby/mirb.so" > $@
+
+usr.manifest:
+	echo "" > $@
