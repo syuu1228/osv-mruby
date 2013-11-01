@@ -23,6 +23,7 @@ $(mirb-objects): kernel-defines =
 $(mirb-objects): CFLAGS += -Wno-unknown-pragmas
 
 libmruby.a:
+	rm -rf mruby
 	git clone -b iij https://github.com/iij/mruby.git
 	cp build_config.rb mruby
 	make -C mruby clean
