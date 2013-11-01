@@ -3,7 +3,7 @@ MRuby::Build.new do |conf|
   toolchain :gcc
 
   # include the default GEMs
-  conf.gembox 'default'
+  conf.gembox 'iij'
 
   conf.gem :github => 'mobiruby/mruby-cfunc', :branch => 'master'
 
