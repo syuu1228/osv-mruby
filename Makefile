@@ -50,8 +50,8 @@ mirb.so: $(mirb-objects)
 	$(q-build-so)
 
 bootfs.manifest: mruby.so mirb.so
-	echo "/mruby.so: module/osv-mruby/mruby.so" >> $@
-	echo "/mirb.so: module/osv-mruby/mirb.so" > $@
+	echo "/mruby.so: module/osv-mruby/mruby.so" > $@
+	echo "/mirb.so: module/osv-mruby/mirb.so" >> $@
 
 usr.manifest:
 	echo "" > $@
