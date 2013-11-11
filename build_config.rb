@@ -84,6 +84,8 @@ MRuby::Build.new do |conf|
 
   conf.gem :git => 'https://github.com/mattn/mruby-json.git'
 
+  conf.gem :git => 'https://github.com/AndrewBelt/mruby-yaml.git'
+
   conf.gem :github => 'mobiruby/mruby-cfunc', :branch => 'master'
 
   # Generate mirb command
