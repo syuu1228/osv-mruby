@@ -74,13 +74,17 @@ MRuby::Build.new do |conf|
 #  conf.gem :git => 'https://github.com/iij/mruby-syslog.git'
   conf.gem :git => 'https://github.com/iij/mruby-tempfile.git'
 
+  conf.gem :git => 'https://github.com/mattn/mruby-http.git'
+
+  conf.gem :git => 'https://github.com/luisbebop/mruby-polarssl.git'
+
+  conf.gem :github => 'mobiruby/mruby-cfunc', :branch => 'master'
+
   # Generate mirb command
   conf.gem :core => "mruby-bin-mirb"
 
   # Generate mruby command
   conf.gem :core => "mruby-bin-mruby"
-
-  conf.gem :github => 'mobiruby/mruby-cfunc', :branch => 'master'
 
   # C compiler settings
   conf.cc do |cc|
