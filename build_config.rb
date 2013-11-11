@@ -76,7 +76,7 @@ MRuby::Build.new do |conf|
 
   conf.gem :git => 'https://github.com/mattn/mruby-http.git'
 
-  conf.gem :git => 'https://github.com/luisbebop/mruby-polarssl.git'
+  conf.gem :git => 'https://github.com/syuu1228/mruby-polarssl.git'
 
   conf.gem :github => 'mobiruby/mruby-cfunc', :branch => 'master'
 
