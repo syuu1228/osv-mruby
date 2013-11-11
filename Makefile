@@ -2,8 +2,8 @@ include ../module.mk
 
 module: mruby.so mirb.so bootfs.manifest usr.manifest
 
-mruby-objects = mruby.o libmruby.a libffi_pic.a
-mirb-objects = mirb.o libmruby.a libffi_pic.a
+mruby-objects = mruby.o libmruby.a libffi_pic.a sqlite3.o
+mirb-objects = mirb.o libmruby.a libffi_pic.a sqlite3.o
 
 define mruby-includes
   build/$(mode)/module/osv-mruby/mruby/src
