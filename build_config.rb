@@ -91,6 +91,8 @@ MRuby::Build.new do |conf|
 
   conf.gem :git => 'https://github.com/syuu1228/osv-mruby-vedis.git'
 
+  conf.gem :git => 'https://github.com/matsumoto-r/mruby-sleep.git'
+
   conf.gem :github => 'mobiruby/mruby-cfunc', :branch => 'master'
 
   # Generate mirb command
