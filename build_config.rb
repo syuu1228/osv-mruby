@@ -82,6 +82,8 @@ MRuby::Build.new do |conf|
 
   conf.gem :git => 'https://github.com/syuu1228/osv-mruby-polarssl.git'
 
+  conf.gem :git => 'https://github.com/mattn/mruby-json.git'
+
   conf.gem :github => 'mobiruby/mruby-cfunc', :branch => 'master'
 
   # Generate mirb command
