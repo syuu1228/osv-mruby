@@ -59,6 +59,7 @@ mirb.so: $(mirb-objects)
 bootfs.manifest: mruby.so mirb.so
 	echo "/mruby.so: module/osv-mruby/mruby.so" > $@
 	echo "/mirb.so: module/osv-mruby/mirb.so" >> $@
+	echo "/shell.rb: module/osv-mruby/shell.rb" >> $@
 
 usr.manifest:
 	echo "" > $@

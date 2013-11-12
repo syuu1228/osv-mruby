@@ -56,6 +56,8 @@ MRuby::Build.new do |conf|
   # Use extended toplevel object (main) methods
   conf.gem :core => "mruby-toplevel-ext"
 
+  conf.gem :core => "mruby-eval"
+
   # Use IIJ modules
 #  conf.gem :git => 'https://github.com/iij/mruby-digest.git'
   conf.gem :git => 'https://github.com/iij/mruby-dir.git'
