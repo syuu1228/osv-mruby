@@ -505,12 +505,12 @@ int uv_udp_set_membership(uv_udp_t* handle,
   memset(&mreq, 0, sizeof mreq);
 
   if (interface_addr) {
-    mreq.imr_interface.s_addr = inet_addr(interface_addr);
+    inet_pton(AF_INET, interface_addr, &mreq.imr_interface.s_addr);
   } else {
     mreq.imr_interface.s_addr = htonl(INADDR_ANY);
   }
 
-  mreq.imr_multiaddr.s_addr = inet_addr(multicast_addr);
+  inet_pton(AF_INET, multicast_addr, &mreq.imr_multiaddr.s_addr);
 
   switch (membership) {
   case UV_JOIN_GROUP:
