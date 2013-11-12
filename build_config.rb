@@ -77,6 +77,7 @@ MRuby::Build.new do |conf|
   conf.gem :git => 'https://github.com/suzukaze/mruby-msgpack.git'
 
   conf.gem :git => 'https://github.com/mattn/mruby-uv.git'
+  conf.gem :git => 'https://github.com/mattn/mruby-sinatic.git'
   conf.gem :git => 'https://github.com/mattn/mruby-http.git'
 #  conf.gem :git => 'https://github.com/mattn/mruby-sinatic.git'
   conf.gem :git => 'https://github.com/mattn/mruby-json.git'
