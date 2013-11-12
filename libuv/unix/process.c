@@ -120,7 +120,7 @@ int uv__make_socketpair(int fds[2], int flags) {
   if (no_cloexec)
     goto skip;
 
-  if (socketpair(AF_UNIX, SOCK_STREAM | UV__SOCK_CLOEXEC | flags, 0, fds) == 0)
+  if (socketpair(AF_UNIX, SOCK_STREAM | SOCK_CLOEXEC | flags, 0, fds) == 0)
     return 0;
 
   /* Retry on EINVAL, it means SOCK_CLOEXEC is not supported.
@@ -150,23 +150,6 @@ skip:
 
 
 int uv__make_pipe(int fds[2], int flags) {
-#if defined(__linux__)
-  static int no_pipe2;
-
-  if (no_pipe2)
-    goto skip;
-
-  if (uv__pipe2(fds, flags | UV__O_CLOEXEC) == 0)
-    return 0;
-
-  if (errno != ENOSYS)
-    return -errno;
-
-  no_pipe2 = 1;
-
-skip:
-#endif
-
   if (pipe(fds))
     return -errno;
 

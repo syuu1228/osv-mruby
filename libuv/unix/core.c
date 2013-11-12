@@ -409,10 +409,10 @@ int uv__accept(int sockfd) {
     if (no_accept4)
       goto skip;
 
-    peerfd = uv__accept4(sockfd,
+    peerfd = accept4(sockfd,
                          NULL,
                          NULL,
-                         UV__SOCK_NONBLOCK|UV__SOCK_CLOEXEC);
+                         SOCK_NONBLOCK|SOCK_CLOEXEC);
     if (peerfd != -1)
       return peerfd;
 

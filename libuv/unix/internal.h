@@ -33,7 +33,8 @@
 #endif
 
 #if defined(__linux__)
-# include "linux-syscalls.h"
+#include <sys/epoll.h>
+#include <sys/eventfd.h>
 #endif /* __linux__ */
 
 #if defined(__sun)
@@ -82,10 +83,10 @@
 #endif
 
 #if defined(__linux__)
-# define UV__POLLIN   UV__EPOLLIN
-# define UV__POLLOUT  UV__EPOLLOUT
-# define UV__POLLERR  UV__EPOLLERR
-# define UV__POLLHUP  UV__EPOLLHUP
+# define UV__POLLIN   EPOLLIN
+# define UV__POLLOUT  EPOLLOUT
+# define UV__POLLERR  EPOLLERR
+# define UV__POLLHUP  EPOLLHUP
 #endif
 
 #if defined(__sun)

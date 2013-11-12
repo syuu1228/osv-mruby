@@ -74,13 +74,13 @@ static unsigned long read_cpufreq(unsigned int cpunum);
 int uv__platform_loop_init(uv_loop_t* loop, int default_loop) {
   int fd;
 
-  fd = uv__epoll_create1(UV__EPOLL_CLOEXEC);
+  fd = epoll_create1(EPOLL_CLOEXEC);
 
   /* epoll_create1() can fail either because it's not implemented (old kernel)
    * or because it doesn't understand the EPOLL_CLOEXEC flag.
    */
   if (fd == -1 && (errno == ENOSYS || errno == EINVAL)) {
-    fd = uv__epoll_create(256);
+    fd = epoll_create(256);
 
     if (fd != -1)
       uv__cloexec(fd, 1);
@@ -106,9 +106,9 @@ void uv__platform_loop_delete(uv_loop_t* loop) {
 
 
 void uv__io_poll(uv_loop_t* loop, int timeout) {
-  struct uv__epoll_event events[1024];
-  struct uv__epoll_event* pe;
-  struct uv__epoll_event e;
+  struct epoll_event events[1024];
+  struct epoll_event* pe;
+  struct epoll_event e;
   QUEUE* q;
   uv__io_t* w;
   uint64_t base;
@@ -136,24 +136,24 @@ void uv__io_poll(uv_loop_t* loop, int timeout) {
     assert(w->fd < (int) loop->nwatchers);
 
     e.events = w->pevents;
-    e.data = w->fd;
+    e.data.fd = w->fd;
 
     if (w->events == 0)
-      op = UV__EPOLL_CTL_ADD;
+      op = EPOLL_CTL_ADD;
     else
-      op = UV__EPOLL_CTL_MOD;
+      op = EPOLL_CTL_MOD;
 
     /* XXX Future optimization: do EPOLL_CTL_MOD lazily if we stop watching
      * events, skip the syscall and squelch the events after epoll_wait().
      */
-    if (uv__epoll_ctl(loop->backend_fd, op, w->fd, &e)) {
+    if (epoll_ctl(loop->backend_fd, op, w->fd, &e)) {
       if (errno != EEXIST)
         abort();
 
-      assert(op == UV__EPOLL_CTL_ADD);
+      assert(op == EPOLL_CTL_ADD);
 
       /* We've reactivated a file descriptor that's been watched before. */
-      if (uv__epoll_ctl(loop->backend_fd, UV__EPOLL_CTL_MOD, w->fd, &e))
+      if (epoll_ctl(loop->backend_fd, EPOLL_CTL_MOD, w->fd, &e))
         abort();
     }
 
@@ -165,7 +165,7 @@ void uv__io_poll(uv_loop_t* loop, int timeout) {
   count = 48; /* Benchmarks suggest this gives the best throughput. */
 
   for (;;) {
-    nfds = uv__epoll_wait(loop->backend_fd,
+    nfds = epoll_wait(loop->backend_fd,
                           events,
                           ARRAY_SIZE(events),
                           timeout);
@@ -199,7 +199,7 @@ void uv__io_poll(uv_loop_t* loop, int timeout) {
 
     for (i = 0; i < nfds; i++) {
       pe = events + i;
-      fd = pe->data;
+      fd = pe->data.fd;
 
       assert(fd >= 0);
       assert((unsigned) fd < loop->nwatchers);
@@ -212,7 +212,7 @@ void uv__io_poll(uv_loop_t* loop, int timeout) {
          * Ignore all errors because we may be racing with another thread
          * when the file descriptor is closed.
          */
-        uv__epoll_ctl(loop->backend_fd, UV__EPOLL_CTL_DEL, fd, pe);
+        epoll_ctl(loop->backend_fd, EPOLL_CTL_DEL, fd, pe);
         continue;
       }
 

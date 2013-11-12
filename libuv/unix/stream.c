@@ -69,7 +69,7 @@ static int uv__open_cloexec(const char* path, int flags) {
   int fd;
 
 #if defined(__linux__)
-  fd = open(path, flags | UV__O_CLOEXEC);
+  fd = open(path, flags | O_CLOEXEC);
   if (fd != -1)
     return fd;
 
