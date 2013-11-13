@@ -1,47 +1,66 @@
 
-ls = Proc.new do |dir|
-	dir = "." if dir == nil
-	p Dir.entries(dir)
+module MrubyShell
+  class CommandBase
+    def exec(*args)
+    end
+
+    def help
+    end
+  end
+
+  def self.register(name, klass)
+    @commands ||= {}
+    @commands[name] = klass
+  end
+
+  def self.help
+    @commands.each do |name, command|
+      if command.is_a? MrubyShell::CommandBase
+        command.help
+      end
+    end
+  end
+
+  def self.run
+    puts "OSv/mruby shell"
+
+    @commands ||= {}
+
+    loop do
+      print "$ "
+
+      begin
+        args = gets.chop.split(/ /)
+      rescue Interrupt => e
+        print "\nbye!\n"
+        exit
+      rescue NoMethodError => e # Catch NilClass NoMethodError on press Ctrl+D.
+        print "\n"
+        next
+      end
+
+      name = args.shift # $0
+
+      if @commands.key? name
+        begin
+          command = @commands[name]
+          if command.is_a? MrubyShell::CommandBase
+            func = command.method(:exec)
+            func.call *args
+          end
+        rescue => e
+          p e
+        rescue SyntaxError => e
+          p e
+        end
+      else
+        help
+      end
+    end
+  end
 end
 
-run = Proc.new do |fn|
-	if fn == nil
-		puts "run requires more argument"
-		return
-	end
-	f = File.open(fn)
-	prog = f.read
-	eval(prog)
-end
+require_relative "shell/_loader"
 
-_exit = Proc.new do ||
-	exit
-end
+MrubyShell.run
 
-help = Proc.new do ||
-	puts "ls <dir>"
-	puts "run <file>"
-	puts "exit"
-end
-
-funcs = {"ls" => ls, "run" => run, "exit" => _exit, "help" => help}
-
-puts "OSv/mruby shell"
-
-loop do
-	print "$ "
-	line = gets.split(/ /)
-	line[line.length - 1].chop!
-	if funcs.key? line[0]
-		begin
-			func = funcs[line[0]]
-			func.call line[1]
-		rescue => e
-			p e
-		rescue SyntaxError => e
-			p e
-		end
-	else
-		help.call
-	end
-end
