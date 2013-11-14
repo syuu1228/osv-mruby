@@ -92,7 +92,8 @@ MRuby::Build.new do |conf|
   conf.gem :git => 'https://github.com/AndrewBelt/mruby-yaml.git'
 
   conf.gem :git => 'https://github.com/syuu1228/osv-mruby-base64.git'
-  conf.gem :git => 'https://github.com/syuu1228/osv-mruby-sha1.git'
+# This gem is licensed under GPL, disabled by default
+#  conf.gem :git => 'https://github.com/syuu1228/osv-mruby-sha1.git'
   conf.gem :git => 'https://github.com/syuu1228/osv-mruby-md5.git'
 
   conf.gem :git => 'https://github.com/syuu1228/osv-mruby-vedis.git'
