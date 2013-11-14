@@ -58,6 +58,8 @@ MRuby::Build.new do |conf|
 
   conf.gem :core => "mruby-eval"
 
+  conf.gem :core => "mruby-exit"
+
   # Use IIJ modules
 #  conf.gem :git => 'https://github.com/iij/mruby-digest.git'
   conf.gem :git => 'https://github.com/iij/mruby-dir.git'
