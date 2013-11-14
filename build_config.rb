@@ -62,7 +62,7 @@ MRuby::Build.new do |conf|
 
   # Use IIJ modules
 #  conf.gem :git => 'https://github.com/iij/mruby-digest.git'
-  conf.gem :git => 'https://github.com/iij/mruby-dir.git'
+  conf.gem :git => 'https://github.com/syuu1228/mruby-dir.git', :branch => 'chdir'
   conf.gem :git => 'https://github.com/iij/mruby-env.git'
   conf.gem :git => 'https://github.com/iij/mruby-errno.git'
   conf.gem :git => 'https://github.com/iij/mruby-io.git'
