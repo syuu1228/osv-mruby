@@ -64,7 +64,7 @@ MRuby::Build.new do |conf|
 #  conf.gem :git => 'https://github.com/iij/mruby-digest.git'
   conf.gem :git => 'https://github.com/iij/mruby-dir.git'
   conf.gem :git => 'https://github.com/iij/mruby-env.git'
-  conf.gem :git => 'https://github.com/iij/mruby-errno.git'
+#  conf.gem :git => 'https://github.com/iij/mruby-errno.git'
   conf.gem :git => 'https://github.com/iij/mruby-io.git'
   conf.gem :git => 'https://github.com/iij/mruby-ipaddr.git'
   conf.gem :git => 'https://github.com/iij/mruby-mock.git'
