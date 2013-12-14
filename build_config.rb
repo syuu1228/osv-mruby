@@ -78,13 +78,13 @@ MRuby::Build.new do |conf|
 #  conf.gem :git => 'https://github.com/iij/mruby-syslog.git'
   conf.gem :git => 'https://github.com/iij/mruby-tempfile.git'
 
-  conf.gem :git => 'https://github.com/suzukaze/mruby-msgpack.git'
+#  conf.gem :git => 'https://github.com/suzukaze/mruby-msgpack.git'
 
-  conf.gem :git => 'https://github.com/mattn/mruby-uv.git'
-  conf.gem :git => 'https://github.com/mattn/mruby-sinatic.git'
+#  conf.gem :git => 'https://github.com/mattn/mruby-uv.git'
+#  conf.gem :git => 'https://github.com/mattn/mruby-sinatic.git'
   conf.gem :git => 'https://github.com/mattn/mruby-http.git'
   conf.gem :git => 'https://github.com/mattn/mruby-json.git'
-  conf.gem :git => 'https://github.com/mattn/mruby-msgpack-rpc.git'
+#  conf.gem :git => 'https://github.com/mattn/mruby-msgpack-rpc.git'
 
 # This gem is licensed under GPL, disabled by default
 #  conf.gem :git => 'https://github.com/syuu1228/osv-mruby-polarssl.git'
@@ -98,9 +98,9 @@ MRuby::Build.new do |conf|
 
   conf.gem :git => 'https://github.com/matsumoto-r/mruby-sleep.git'
 
-  conf.gem :git => 'https://github.com/matsumoto-r/mruby-simplehttp.git'
-  conf.gem :git => 'https://github.com/matsumoto-r/mruby-httprequest.git'
-  conf.gem :git => 'https://github.com/iij/mruby-aws-s3.git'
+#  conf.gem :git => 'https://github.com/matsumoto-r/mruby-simplehttp.git'
+#  conf.gem :git => 'https://github.com/matsumoto-r/mruby-httprequest.git'
+#  conf.gem :git => 'https://github.com/iij/mruby-aws-s3.git'
 
   conf.gem :github => 'mobiruby/mruby-cfunc', :branch => 'master'
 
