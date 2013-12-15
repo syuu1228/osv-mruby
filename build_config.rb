@@ -74,7 +74,7 @@ MRuby::Build.new do |conf|
   conf.gem :git => 'https://github.com/iij/mruby-regexp-pcre.git'
   conf.gem :git => 'https://github.com/iij/mruby-require.git'
   conf.gem :git => 'https://github.com/iij/mruby-simple-random.git'
-  conf.gem :git => 'https://github.com/syuu1228/osv-mruby-socket.git'
+  conf.gem :git => 'https://github.com/iij/mruby-socket.git'
 #  conf.gem :git => 'https://github.com/iij/mruby-syslog.git'
   conf.gem :git => 'https://github.com/iij/mruby-tempfile.git'
 
