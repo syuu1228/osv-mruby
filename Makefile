@@ -5,8 +5,8 @@ module: mruby.so mirb.so bootfs.manifest usr.manifest
 libyaml = libyaml/api.o libyaml/reader.o libyaml/scanner.o libyaml/parser.o libyaml/_loader.o libyaml/writer.o libyaml/emitter.o libyaml/dumper.o
 libyaml-flags = -Wno-unused-value -DYAML_VERSION_STRING=\"0.1.4\" -DYAML_VERSION_MAJOR=0 -DYAML_VERSION_MINOR=1 -DYAML_VERSION_PATCH=4
 
-mruby-objects = mruby.o libmruby.a libffi_pic.a $(libyaml)
-mirb-objects = mirb.o libmruby.a libffi_pic.a $(libyaml)
+mruby-objects = mruby.o libmruby.a $(libyaml)
+mirb-objects = mirb.o libmruby.a $(libyaml)
 
 define mruby-includes
   build/$(mode)/module/osv-mruby/mruby/src
