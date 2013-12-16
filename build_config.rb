@@ -91,10 +91,6 @@ MRuby::Build.new do |conf|
 
   conf.gem :git => 'https://github.com/matsumoto-r/mruby-sleep.git'
 
-  conf.gem :git => 'https://github.com/matsumoto-r/mruby-simplehttp.git'
-  conf.gem :git => 'https://github.com/matsumoto-r/mruby-httprequest.git'
-  conf.gem :git => 'https://github.com/iij/mruby-aws-s3.git'
-
   conf.gem :git => 'https://github.com/syuu1228/mruby-eshell.git'
 
   # C compiler settings
@@ -102,7 +98,11 @@ MRuby::Build.new do |conf|
       cc.flags << "-O0 -fPIC -Wall"
   end
 
+  # Copyleft gems
   conf.gem :git => 'https://github.com/syuu1228/osv-mruby-polarssl.git'
   conf.gem :git => 'https://github.com/syuu1228/osv-mruby-sha1.git'
   conf.gem :git => 'https://github.com/matsumoto-r/mruby-vedis.git'
+  conf.gem :git => 'https://github.com/matsumoto-r/mruby-simplehttp.git'
+  conf.gem :git => 'https://github.com/matsumoto-r/mruby-httprequest.git'
+  conf.gem :git => 'https://github.com/iij/mruby-aws-s3.git'
 end
