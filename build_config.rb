@@ -108,5 +108,5 @@ MRuby::Build.new do |conf|
 
   conf.gem :git => 'https://github.com/syuu1228/osv-mruby-polarssl.git'
   conf.gem :git => 'https://github.com/syuu1228/osv-mruby-sha1.git'
-  conf.gem :git => 'https://github.com/syuu1228/osv-mruby-vedis.git'
+  conf.gem :git => 'https://github.com/matsumoto-r/mruby-vedis.git'
 end
