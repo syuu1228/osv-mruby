@@ -30,7 +30,7 @@ libmruby.a:
 	git submodule update --init
 	cp build_config.rb mruby
 	make -C mruby clean
-	make -C mruby COPYLEFT=yes
+	make -C mruby
 	ln -sf mruby/build/host/lib/libmruby.a .
 
 mruby.c: libmruby.a
